@@ -1,14 +1,14 @@
 import React from 'react';
+import useStore from '../store/store';
 
 /**
- * CityInput is a functional component that renders an input field for entering a city name.
- * 
- * @param {Object} props - The props object.
- * @param {string} props.city - The current city name.
- * @param {function} props.setCity - Function to update the city name.
+ * CityInput component that allows the user to input a city name.
+ *
+ * @param {Object} props - The component props.
  * @param {function} props.handleKeyPress - Function to handle key press events.
  */
-function CityInput({ city, setCity, handleKeyPress }) {
+function CityInput({ handleKeyPress }) {
+    const { city, setCity, theme } = useStore();
 
     // Handler for the input change event - updates the city name when the input changes
     const handleChange = (e) => {
@@ -20,8 +20,9 @@ function CityInput({ city, setCity, handleKeyPress }) {
     // Render the component
     return (
         <input
-            className={`m-4 mb-10 p-3 text-base sm:text-lg md:text-xl lg:text-2xl text-white rounded-xl text-center bg-gray-800
-                transition-all duration-500 placeholder-gray-500`}
+            className={`m-4 mb-10 p-3 text-base sm:text-lg md:text-xl lg:text-2xl rounded-xl text-center transition-all duration-500 
+                ${ theme === 'dark' ? 'bg-dark-primary text-dark-text placeholder-dark-secondary' : 'bg-light-secondary text-light-text placeholder-light-text' }`
+            }
             type="text"
             placeholder={placeholder}
             value={city}

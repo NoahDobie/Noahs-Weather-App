@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define the default grid layout */
+.weather-list {
+    display: grid;
+    justify-self: center;
+}
+
+/* Extra small screens (small smartphones) */
+@media (max-width: 639px) {
+    .weather-list {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, auto);
+    }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .weather-list {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(2, auto);
+    }
+}
+
+/* Large screens (desktops and larger) */
+@media (min-width: 1024px) {
+    .weather-list {
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: auto;
+    }
+}

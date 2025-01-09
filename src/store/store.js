@@ -21,8 +21,8 @@ import { create } from 'zustand';
  * @property {Weather[]} weatherHistory - The list of weather forecasts.
  * @property {function(Weather): void} addWeatherToHistory - Function to add a weather forecast to the history.
  * @property {function(string): void} removeWeatherFromHistory - Function to remove a weather forecast from the history.
- * @property {number} maxHistory - The maximum number of weather forecasts to keep in history.
- * @property {function(number): void} setMaxHistory - Function to set the maximum number of weather forecasts to keep in history.
+ * @property {string} theme - The current theme (light or dark).
+ * @property {function(): void} toggleTheme - Function to toggle the theme.
  */
 
 const initialState = {
@@ -31,6 +31,7 @@ const initialState = {
     weatherLoaded: false,
     weatherHistory: [],
     maxHistory: 4,
+    theme: 'dark', // Default theme
 };
 
 const useStore = create((set) => ({
@@ -45,7 +46,9 @@ const useStore = create((set) => ({
     removeWeatherFromHistory: (city) => set((state) => ({
         weatherHistory: state.weatherHistory.filter((weather) => weather.city !== city),
     })),
-    setMaxHistory: (maxHistory) => set({ maxHistory }),
+    toggleTheme: () => set((state) => ({
+        theme: state.theme === 'dark' ? 'light' : 'dark',
+    })),
 }));
 
 export default useStore;

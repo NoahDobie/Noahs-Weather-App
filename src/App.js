@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './tailwind.css';
-import Weather from './Weather';
-import CityInput from './CityInput';
-import WeatherList from './WeatherList';
-import LoadingSpinner from './LoadingSpinner';
-import useStore from './store';
-import useWeather from './useWeather';
+import CityInput from './components/CityInput';
+import WeatherList from './components/WeatherList';
+import LoadingSpinner from './components/LoadingSpinner';
+import ThemeToggle from './components/ThemeToggle';
+import useStore from './store/store';
+import useWeather from './hooks/useWeather';
 
 /**
  * Main application component for the Weather App.
@@ -24,8 +24,10 @@ import useWeather from './useWeather';
  */
 function App() {
     // Get the store state and actions - from Zustand store.js
-    const { city, setCity, searchCity, setSearchCity, weatherLoaded, setWeatherLoaded, weatherHistory, addWeatherToHistory } = useStore();
+    const { city, setCity, searchCity, setSearchCity, weatherLoaded, setWeatherLoaded, weatherHistory, addWeatherToHistory, theme } = useStore();
     const { weather, loading, error } = useWeather(searchCity);
+
+    const title = 'Noah\'s Weather App'; // App title
 
     // Handle search for weather data
     const handleSearch = () => {
@@ -50,20 +52,19 @@ function App() {
         }
     }, [weather]);
 
-    const title = 'Noah\'s Weather App'; // App title
-
     // Render the app
     return (
-        <div className={`h-screen flex flex-col justify-center items-center font-sans
-            bg-gray-900 text-white overflow-hidden
-            transition-all duration-500`}>
-            <h1 className="mt-10 mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-semibold">
-                { title }
+        <div className={`h-screen flex flex-col justify-center items-center font-sans overflow-hidden transition-all duration-500
+            ${theme === 'dark' ? 'bg-dark-background text-dark-text' : 'bg-light-background text-light-text'}`
+        }>
+            <ThemeToggle />
+            <h1 className="mt-10 mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold">
+                {title}
             </h1>
-            <CityInput city={city} setCity={setCity} handleKeyPress={handleKeyPress} />
+            <CityInput handleKeyPress={handleKeyPress} />
             {loading && <LoadingSpinner />}
-            {error && <p className="mt-10 text-center text-red-500">{error}</p>}
-            <div className="flex flex-col items-center transition-all duration-500" style={{ minHeight: '200px' }}>
+            {error && <p className="mt-10 text-center text-red-400">{error}</p>}
+            <div className="flex flex-col items-center justify-center transition-all duration-500" style={{ minHeight: '200px' }}>
                 {weatherHistory.length > 0 && <WeatherList weatherHistory={weatherHistory} />}
             </div>
         </div>
