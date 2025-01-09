@@ -10,6 +10,8 @@ A responsive web application that allows users to search for weather forecasts b
 - Dynamically adjusts the number of weather components displayed based on screen size
 - Remove weather forecasts by clicking on them
 
+![Weather App](https://github.com/user-attachments/assets/c7962e6d-81b1-4540-8c7b-b3b5ea6b83af)
+
 ## Technologies Used
 
 - React
