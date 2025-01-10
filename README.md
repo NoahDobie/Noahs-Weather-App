@@ -4,6 +4,8 @@
 
 A responsive web application that allows users to search for weather forecasts by city. The app fetches weather data from the OpenWeatherMap API and displays it in a user-friendly interface. The app is built using React, Zustand for state management, and Tailwind CSS for styling.
 
+Built to get a feel for modern web design!
+
 ## Features
 
 - Search for weather forecasts by city
