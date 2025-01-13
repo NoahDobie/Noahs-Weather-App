@@ -1,6 +1,6 @@
 {
-  "name": "test-weather-app",
-  "version": "0.0.0",
+  "name": "noahs-weather-app",
+  "version": "1.0.0",
   "main": "/src/index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -20,7 +20,7 @@
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.0",
     "react-spinners": "^0.15.0",
-    "typescript": "^5.7.3",
+    "typescript": "^4.9.5",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
