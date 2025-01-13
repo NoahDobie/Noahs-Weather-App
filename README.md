@@ -1,6 +1,10 @@
 # Noah's Weather App
 
+![weather-app-gif](https://github.com/user-attachments/assets/52ad7f9c-3bad-4249-beb4-68e964fd04a0)
+
 A responsive web application that allows users to search for weather forecasts by city. The app fetches weather data from the OpenWeatherMap API and displays it in a user-friendly interface. The app is built using React, Zustand for state management, and Tailwind CSS for styling.
+
+Built to get a feel for modern web design!
 
 ## Features
 
@@ -9,8 +13,6 @@ A responsive web application that allows users to search for weather forecasts b
 - Responsive design that adapts to different screen sizes
 - Dynamically adjusts the number of weather components displayed based on screen size
 - Remove weather forecasts by clicking on them
-
-![Weather App](https://github.com/user-attachments/assets/c7962e6d-81b1-4540-8c7b-b3b5ea6b83af)
 
 ## Technologies Used
 
@@ -35,5 +37,8 @@ A responsive web application that allows users to search for weather forecasts b
    npm start
 5. Browser will either auto-open or open and navigate to http://localhost:3000
 6. Success!
+
+### Other Credits
+- @anatoliygatt dark mode toggle switch - https://github.com/anatoliygatt/dark-mode-toggle
 
    
