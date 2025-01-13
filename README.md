@@ -62,4 +62,5 @@ Can likely help me making it even better on different devices :D
 
 ## Credits
 
+@davidhu2000 React Spinners - https://github.com/davidhu2000/react-spinners
 @anatoliygatt Dark Mode Toggle - https://github.com/anatoliygatt/dark-mode-toggle

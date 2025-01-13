@@ -2,6 +2,15 @@ import React from 'react';
 import GridLoader from 'react-spinners/GridLoader';
 
 /**
+ * 
+ * Using @davidhu2000/react-spinners package to create a cool loading spinner
+ * found on github here: https://github.com/davidhu2000/react-spinners
+ * 
+ * ALL CREDIT GOES TO THE AUTHOR OF THE PACKAGE FOR THIS SPINNER!!!
+ * 
+ */
+
+/**
  * LoadingSpinner component renders a loading spinner using react-spinners by David Hu
  * 
  * @component
