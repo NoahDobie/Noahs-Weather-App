@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: 'class', // Enable dark mode by adding the 'dark' class
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -17,6 +17,12 @@ module.exports = {
           primary: '#374151',
           secondary: '#4b5563',
         },
+      },
+      minWidth: {
+        'screen': '320px',
+      },
+      minHeight: {
+        'screen': '400px',
       },
     },
   },

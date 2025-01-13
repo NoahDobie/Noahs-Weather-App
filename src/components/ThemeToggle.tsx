@@ -22,7 +22,7 @@ import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
  *   <ThemeToggle />
  * )
  */
-const ThemeToggle = () => {
+const ThemeToggle: React.FC = () => {
     const { theme, toggleTheme } = useStore(); // Get the theme and toggleTheme function from the store
 
     const handleModeChange = () => {
@@ -30,20 +30,20 @@ const ThemeToggle = () => {
     };
 
     return (
-        <div className="absolute top-4 right-4">
+        <div className="absolute top-2 right-2" style={{ transform: 'scale(0.5)' }}>
             <DarkModeToggle
-                mode={theme}
-                ariaLabel="Toggle color scheme"
-                size="sm"
-                inactiveTrackColor="#F7F8F9"
-                inactiveTrackColorOnHover="#EBEBEB"
-                inactiveTrackColorOnActive="#374151"
-                activeTrackColor="#1f2937"
-                activeTrackColorOnHover="#0e131a"
-                activeTrackColorOnActive="#2C3E5D"
-                inactiveThumbColor="#4b5563"
-                activeThumbColor="#f9fafb"
-                onChange={handleModeChange}
+            mode={theme as 'dark' | 'light'}
+            ariaLabel="Toggle color scheme"
+            size="sm"
+            inactiveTrackColor="#F7F8F9"
+            inactiveTrackColorOnHover="#EBEBEB"
+            inactiveTrackColorOnActive="#374151"
+            activeTrackColor="#1f2937"
+            activeTrackColorOnHover="#0e131a"
+            activeTrackColorOnActive="#2C3E5D"
+            inactiveThumbColor="#4b5563"
+            activeThumbColor="#f9fafb"
+            onChange={handleModeChange}
             />
         </div>
     );
