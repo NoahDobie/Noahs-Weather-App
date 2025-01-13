@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
     // Handle key press event
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' || event.key === 'Done' || event.keyCode === 13) {
             handleSearch();
         }
     };
