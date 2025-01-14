@@ -6,6 +6,20 @@ import ThemeToggle from './components/ThemeToggle';
 import useStore from './store/store';
 import useWeather from './hooks/useWeather';
 
+/**
+ * The main component of the Weather App.
+ * 
+ * This component handles the following functionalities:
+ * - Fetching and displaying weather data for a searched city.
+ * - Managing the search input and triggering the search on key press.
+ * - Adding fetched weather data to the history.
+ * - Toggling between light and dark themes.
+ * 
+ * @component
+ * 
+ * @returns {JSX.Element} The rendered component.
+ * 
+ */
 const App: React.FC = () => {
     const { city, setCity, searchCity, setSearchCity, setWeatherLoaded, weatherHistory, addWeatherToHistory, theme } = useStore();
     const { weather, loading, error } = useWeather(searchCity);
@@ -13,10 +27,10 @@ const App: React.FC = () => {
     // Handle search for weather data
     const handleSearch = () => {
         if (city.trim() !== '') {
-            console.log('Searching for city:', city); // Debug log
-            setSearchCity(city); // Set the city being searched
-            setWeatherLoaded(true); // Set the weather data loaded flag
-            setCity(''); // Clear the city input
+            console.log('Searching for city:', city);
+            setSearchCity(city);
+            setWeatherLoaded(true);
+            setCity('');
         }
     };
 
@@ -30,7 +44,7 @@ const App: React.FC = () => {
     // Add weather to history when new weather data is fetched
     useEffect(() => {
         if (weather) {
-            console.log('Adding weather to history:', weather); // Debug log
+            console.log('Adding weather to history:', weather);
             addWeatherToHistory(weather);
         }
     }, [weather, addWeatherToHistory]);
@@ -40,8 +54,8 @@ const App: React.FC = () => {
     // Render the app
     return (
         <div className={`min-w-screen min-h-screen h-screen flex flex-col justify-center items-center font-sans overflow-hidden transition-all duration-500
-            ${theme === 'dark' ? 'bg-dark-background text-dark-text' : 'bg-light-background text-light-text'}`}
-        >
+            ${theme === 'dark' ? 'bg-dark-background text-dark-text' : 'bg-light-background text-light-text'}`}>
+            
             <ThemeToggle />
 
             <h1 className="mt-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold flex items-center">

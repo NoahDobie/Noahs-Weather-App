@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY || 'your-default-api-key-here';
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 if (!API_KEY) {
+    console.error('API Key is not defined! Please set the REACT_APP_WEATHER_API_KEY environment variable.');
     throw new Error('API Key is not defined!');
 }
 
@@ -41,28 +43,23 @@ const useWeather = (city: string): UseWeatherReturn => {
 
                 try {
                     const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
-                    const query = `?q=${city}&appid=${API_KEY}&units=metric`;
+                    const units = 'metric';
+                    const query = `?q=${city}&appid=${API_KEY}&units=${units}`;
                     const url = baseUrl + query;
 
-                    // Fetch weather data and check if the response is successful
-                    const response = await fetch(url);
+                    // Fetch weather data using Axios
+                    const response = await axios.get(url);
 
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        const errorMessage = `${errorData.message.charAt(0).toUpperCase() + errorData.message.slice(1)}.`;
-                        throw new Error(errorMessage);
-                    }
+                    const data = response.data;
 
-                    const data = await response.json();
-
-                    console.log(data);
+                    console.log('Weather data retrieved:', data);
 
                     // Set the weather variable with the fetched data
                     setWeather({
                         city: data.name,
                         country: data.sys.country,
                         date: new Date(data.dt * 1000).toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' }),
-                        icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`,
+                        icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
                         description: transformDescription(data.weather[0].description),
                         temperature: Math.round(data.main.temp),
                     });

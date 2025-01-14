@@ -1,6 +1,6 @@
 {
   "name": "noahs-weather-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "/src/index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -15,6 +15,7 @@
     "@mui/material": "^6.3.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
